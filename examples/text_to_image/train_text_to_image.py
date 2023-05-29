@@ -198,8 +198,8 @@ def parse_args():
     parser.add_argument(
         "--resolution",
         type=int,
-        # default=512,
-        default=(595,512),
+        default=512,
+        # default=(595,512),
         help=(
             "The resolution for input images, all the images in the train/validation dataset will be resized to this"
             " resolution"
@@ -684,7 +684,7 @@ def main():
     # Preprocessing the datasets.
     train_transforms = transforms.Compose(
         [
-            # transforms.Resize(args.resolution, interpolation=transforms.InterpolationMode.BILINEAR),
+            transforms.Resize(args.resolution, interpolation=transforms.InterpolationMode.BILINEAR),
             # transforms.CenterCrop(args.resolution) if args.center_crop else transforms.RandomCrop(args.resolution),
             # transforms.RandomHorizontalFlip() if args.random_flip else transforms.Lambda(lambda x: x),
             transforms.ToTensor(),
